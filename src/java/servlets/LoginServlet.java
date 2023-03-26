@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import static models.Role_.roleId;
 import models.User;
 import services.AccountService;
 
@@ -35,6 +36,7 @@ public class LoginServlet extends HttpServlet {
         }
         
         HttpSession session = request.getSession();
+        session.setAttribute("roleId", roleId);
         session.setAttribute("email", email);
         
         if (user.getRole().getRoleId() == 1) {
